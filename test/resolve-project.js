@@ -1,10 +1,15 @@
 var assert = require('assert')
+var td = require('testdouble')
+var choose = td.replace('../lib/choose')
 var resolveProject = require('../lib/resolve-project')
 
 // Make the test directory our CWD, since resolve-project uses relative paths.
 process.chdir(__dirname)
 
 module.exports = {
+  afterEach: function () {
+    td.reset()
+  },
   'path is a directory': {
     'and is a project': function (done) {
       return resolveProject('fixtures/dir-project')
@@ -17,6 +22,16 @@ module.exports = {
       return resolveProject('fixtures/dir-no-project')
         .then(function (subject) {
           assert.equal(subject, 'fixtures/dir-no-project')
+        })
+        .then(done, done)
+    },
+    'and has MULTIPLE projects': function (done) {
+      td.when(choose(['one.sublime-project', 'two.sublime-project']))
+        .thenReturn(Promise.resolve('two.sublime-project'))
+
+      return resolveProject('fixtures/dir-multi-project')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-multi-project/two.sublime-project')
         })
         .then(done, done)
     },
@@ -33,6 +48,16 @@ module.exports = {
       return resolveProject('fixtures/dir-no-project/')
         .then(function (subject) {
           assert.equal(subject, 'fixtures/dir-no-project/')
+        })
+        .then(done, done)
+    },
+    'and has MULTIPLE projects': function (done) {
+      td.when(choose(['one.sublime-project', 'two.sublime-project']))
+        .thenReturn(Promise.resolve('two.sublime-project'))
+
+      return resolveProject('fixtures/dir-multi-project/')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-multi-project/two.sublime-project')
         })
         .then(done, done)
     },

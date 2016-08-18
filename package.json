@@ -12,9 +12,11 @@
   "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com> (https://www.schoonology.com/)",
   "license": "MIT",
   "dependencies": {
+    "inquirer": "~0.12.0",
     "opener": "~1.4.1"
   },
   "devDependencies": {
-    "teenytest": "~5.0.0"
+    "teenytest": "~5.0.0",
+    "testdouble": "~1.4.3"
   }
 }
