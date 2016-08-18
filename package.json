@@ -3,12 +3,17 @@
   "description": "A quicker way to open projects in your editor of choice.",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "code": "bin/code"
+  },
   "scripts": {
     "test": "teenytest test/resolve-project.js"
   },
   "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com> (https://www.schoonology.com/)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "opener": "~1.4.1"
+  },
   "devDependencies": {
     "teenytest": "~5.0.0"
   }
