@@ -1,0 +1,12 @@
+{
+  "name": "code",
+  "description": "A quicker way to open projects in your editor of choice.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com> (https://www.schoonology.com/)",
+  "license": "MIT",
+  "dependencies": {}
+}
