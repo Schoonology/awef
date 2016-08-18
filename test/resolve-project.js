@@ -6,31 +6,49 @@ process.chdir(__dirname)
 
 module.exports = {
   'path is a directory': {
-    'and is a project': function () {
-      var subject = resolveProject('fixtures/dir-project')
-      assert.equal(subject, 'fixtures/dir-project/stuff.sublime-project')
+    'and is a project': function (done) {
+      return resolveProject('fixtures/dir-project')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-project/stuff.sublime-project')
+        })
+        .then(done, done)
     },
-    'and is NOT a project': function () {
-      var subject = resolveProject('fixtures/dir-no-project')
-      assert.equal(subject, 'fixtures/dir-no-project')
+    'and is NOT a project': function (done) {
+      return resolveProject('fixtures/dir-no-project')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-no-project')
+        })
+        .then(done, done)
     },
   },
   'path is a directory (with a trailing slash)': {
-    'and is a project': function () {
-      var subject = resolveProject('fixtures/dir-project/')
-      assert.equal(subject, 'fixtures/dir-project/stuff.sublime-project')
+    'and is a project': function (done) {
+      return resolveProject('fixtures/dir-project/')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-project/stuff.sublime-project')
+        })
+        .then(done, done)
     },
-    'and is NOT a project': function () {
-      var subject = resolveProject('fixtures/dir-no-project/')
-      assert.equal(subject, 'fixtures/dir-no-project/')
+    'and is NOT a project': function (done) {
+      return resolveProject('fixtures/dir-no-project/')
+        .then(function (subject) {
+          assert.equal(subject, 'fixtures/dir-no-project/')
+        })
+        .then(done, done)
     },
   },
-  'path is a file': function () {
-    var subject = resolveProject('fixtures/file.txt')
-    assert.equal(subject, 'fixtures/file.txt')
+  'path is a file': function (done) {
+    return resolveProject('fixtures/file.txt')
+      .then(function (subject) {
+        assert.equal(subject, 'fixtures/file.txt')
+      })
+      .then(done, done)
   },
-  'path does not exist': function () {
-    var subject = resolveProject('fixtures/does-not-exist')
-    assert.equal(subject, 'fixtures/does-not-exist')
+  'path does not exist': function (done) {
+    return resolveProject('fixtures/does-not-exist')
+      .then(function (subject) {
+        assert.equal(subject, 'fixtures/does-not-exist')
+      })
+      .then(done, done)
   },
 }

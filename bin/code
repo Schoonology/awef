@@ -2,4 +2,8 @@
 var open = require('opener')
 var resolveProject = require('../lib/resolve-project')
 
-open(resolveProject(process.argv[2]))
+resolveProject(process.argv[2])
+  .then(open)
+  .catch(function (err) {
+    console.error('Failed with: %s', err.message)
+  })
