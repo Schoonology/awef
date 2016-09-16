@@ -2,7 +2,7 @@
 var open = require('opener')
 var resolveProject = require('../lib/resolve-project')
 
-resolveProject(process.argv[2])
+resolveProject(process.argv[2] || process.cwd())
   .then(open)
   .catch(function (err) {
     console.error('Failed with: %s', err.message)
