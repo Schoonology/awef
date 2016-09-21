@@ -5,7 +5,7 @@ A quicker way to open projects in your editor of choice.
 ## Usage
 
 ```
-awef path
+awef [path]
 ```
 
 Awef defers to the operating system (using native tools like `xdg-open` and
