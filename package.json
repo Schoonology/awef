@@ -1,10 +1,10 @@
 {
-  "name": "code",
+  "name": "awef",
   "description": "A quicker way to open projects in your editor of choice.",
   "version": "1.0.0",
   "main": "index.js",
   "bin": {
-    "code": "bin/code"
+    "awef": "bin/awef"
   },
   "scripts": {
     "test": "teenytest test/resolve-project.js"
